@@ -11,7 +11,9 @@ function ProfileCard() {
             </div>
         </div>
 
-        <Post author="Viktor" title="Study React for frontend"  likes={17} text="какой-то осмысленный текст" />
+        <Post author="Viktor" title="Study React for frontend" text="какой-то осмысленный текст" />
+        <Post author="Viktor" title="Exploring web-dev" text="какой-то осмысленный текст" />
+        <Post author="Viktor" title="Im going become a fullstack developer" text="какой-то осмысленный текст" />
     </section>
     )
 }
