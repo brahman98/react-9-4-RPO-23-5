@@ -18,8 +18,8 @@ button {
 
 /* HEADER */
 .header {
-  background: #111827;
-  color: white;
+  background: #1a1a1d;
+  color: #950740;
   text-align: center;
   padding: 40px 20px;
 }
@@ -27,6 +27,7 @@ button {
 .header h1 {
   margin: 0 0 10px;
   font-size: 32px;
+  text-shadow: 1px 2px 2px #9ca3af;
 }
 
 .header p {
@@ -77,6 +78,49 @@ main {
   margin: 0;
   color: #6b7280;
 }
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 25px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  font-family: inherit;
+}
+.post-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.post-form input:focus,
+.post-form textarea:focus {
+  border-color: #1a1a1d;
+}
+.post-form button {
+  align-self: flex-end;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a1d;
+  color: white;
+  padding: 11px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.post-form button:hover {
+  background: #374151;
+}
+
+
+
 
 /* POST */
 .post {
