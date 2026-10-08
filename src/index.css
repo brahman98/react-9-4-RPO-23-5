@@ -34,6 +34,18 @@ button {
   margin: 0;
   color: #9ca3af;
 }
+.navigation {
+  width: 400px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  
+}
 
 /* MAIN */
 main {
@@ -63,13 +75,15 @@ main {
   height: 55px;
   display: flex;
   align-items: center;
-  background: #111827;
+  background: #ffffff;
   color: white;
   border-radius: 50%;
   font-size: 24px;
   font-weight: bold;
 }
-
+.profile-avatar {
+  width: 55px;
+}
 .profile-info h2 {
   margin: 0 0 5px;
 }
@@ -124,8 +138,11 @@ main {
 
 /* POST */
 .post {
-  padding: 25px 0;
+  padding: 25px 20px;
   border-bottom: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 30px;
+  margin-bottom: 30px;
 }
 
 .post:last-child {
@@ -174,3 +191,4 @@ main {
 .actions button:active {
   transform: translateY(0);
 }
+

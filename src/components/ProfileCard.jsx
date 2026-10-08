@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Post from "./Post";
+import avatar from "../assets/r.png"
 
 function ProfileCard() {
   // const [posts, setPosts] = useState([
@@ -50,7 +51,9 @@ function ProfileCard() {
   return (
     <section className="profile-card">
       <div className="profile">
-        <div className="avatar">avatar</div>
+        <div className="avatar">
+          <img className="profile-avatar" src={avatar} alt="avatar" />
+        </div>
         <div className="profile-info">
           <h2>Виктор</h2>
           <p>@nickname</p>

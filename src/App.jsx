@@ -1,9 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-
-// import { useState } from "react";
 import "./App.css";
 import "./index.css";
-// import ProfileCard from "./components/ProfileCard"
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -11,7 +8,6 @@ import Settings from "./pages/Settings";
 import About from "./pages/About";
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <div className="app">
