@@ -1,4 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { PostsProvider } from "./context/PostsContext";
+import { UserProvider } from "./context/UserContext";
+
 import "./App.css";
 import "./index.css";
 import Header from "./components/Header";
@@ -8,17 +11,20 @@ import Settings from "./pages/Settings";
 import About from "./pages/About";
 
 function App() {
-
   return (
     <div className="app">
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <UserProvider>
+          <PostsProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </PostsProvider>
+        </UserProvider>
       </main>
     </div>
   );

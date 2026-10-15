@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProfileCard from "../components/ProfileCard";
 import Post from "../components/Post";
+import { usePosts } from "../context/PostsContext";
+import { useUser } from "../context/UserContext";
 
 function Profile() {
   // const [posts, setPosts] = useState([
@@ -12,52 +14,56 @@ function Profile() {
   //   },
   // ]);
   
-  const [posts, setPosts] = useState(() => {
-    const savedPosts = localStorage.getItem("posts");
+  // const [posts, setPosts] = useState(() => {
+  //   const savedPosts = localStorage.getItem("posts");
 
-    if (savedPosts) {
-      return JSON.parse(savedPosts);
-    }
+  //   if (savedPosts) {
+  //     return JSON.parse(savedPosts);
+  //   }
 
-    return [
-      {
-        id: 1,
-        title: "Полезные новшества ECMAScript 2026",
-        text: "JavaScript получает новый стандарт языка каждый год. Некоторые редакции представляют синтаксис, который меняет то, как программы пишутся или как они выполняются. Версия ECMAScript 2026 (ES17) представила набор полезных возможностей, которые мы рассмотрим в этой статье. Эти возможности добавляют API для задач, которые сейчас решаются с помощью небольших утилит, повторяющихся проверок или обходных путей, подверженных ошибкам.",
-        author: "Viktor",
-      },
-    ];
-  });
+  //   return [
+  //     {
+  //       id: 1,
+  //       title: "Полезные новшества ECMAScript 2026",
+  //       text: "JavaScript получает новый стандарт языка каждый год. Некоторые редакции представляют синтаксис, который меняет то, как программы пишутся или как они выполняются. Версия ECMAScript 2026 (ES17) представила набор полезных возможностей, которые мы рассмотрим в этой статье. Эти возможности добавляют API для задач, которые сейчас решаются с помощью небольших утилит, повторяющихся проверок или обходных путей, подверженных ошибкам.",
+  //       author: "Viktor",
+  //     },
+  //   ];
+  // });
 
+  const { userName } = useUser();
+  const { posts, setPosts } = usePosts();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-
-  // useEffect(() => {
-  //   console.log("Изменились посты");
-  // }, [posts]);
+  const [error, setError] = useState("");
+  
 
   // Сохраняем посты после каждого изменения
-  useEffect(() => {
-    localStorage.setItem(
-      "posts",
-      JSON.stringify(posts)
-    );
-  }, [posts]);
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "posts",
+  //     JSON.stringify(posts)
+  //   );
+  // }, [posts]);
 
   function addPost(event) {
     event.preventDefault();
-    if (!title.trim() || !title.trim()) return;
+    if (!title.trim() || !text.trim()) {
+      setError("Заполните заголовок и текст поста");
+      return;
+    } 
 
     const newPost = {
       id: Date.now(),
       title: title,
       text: text,
-      author: "Viktor",
+      author: userName,
     };
 
     setPosts([...posts, newPost]);
     setTitle("");
     setText("");
+    setError("");
   }
 
   function deletePost(id) {
@@ -76,6 +82,12 @@ function Profile() {
         <p>Всего публикаций: {posts.length}</p>
 
         <form className="post-form" onSubmit={addPost}>
+          {error && (
+            <p className="form-error">
+              {error}
+            </p>
+          )}
+
           <input
             type="text"
             placeholder="Заголовок"
