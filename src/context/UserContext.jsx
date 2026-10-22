@@ -1,9 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-const UserContext = createContext(null);
+const UserContext = createContext();
 
 export function UserProvider({ children }) {
     const [userName, setUserName] = useState("Viktor");
+    const [avatar, setAvatar] = useState(() => {
+        return localStorage.getItem("avatar") || "";
+    });
 
     return (
     <UserContext.Provider value={{ userName, setUserName }}>

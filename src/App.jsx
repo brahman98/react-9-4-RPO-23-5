@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { PostsProvider } from "./context/PostsContext";
 import { UserProvider } from "./context/UserContext";
+import { useTheme } from "./context/ThemeContext";
 
 import "./App.css";
 import "./index.css";
@@ -11,8 +12,10 @@ import Settings from "./pages/Settings";
 import About from "./pages/About";
 
 function App() {
+const { theme } = useTheme();
+
   return (
-    <div className="app">
+    <div className={`app theme-${theme}`}>
       <Header />
       <main>
         <UserProvider>
