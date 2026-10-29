@@ -48,7 +48,7 @@ function ProfileCard() {
   //     posts.filter((post) => post.id != id)
   //   );
   // }
-  const { userName } = useUser();
+  const { userName, avatar } = useUser();
   return (
     <section className="profile-card">
       <div className="profile">
