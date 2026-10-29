@@ -1,13 +1,15 @@
 import { useRef, useState } from "react";
 import { useUser } from "../context/UserContext";
+import useUserProfile from "../hooks/useUserProfile";
 
 function Settings() {
     const {
         userName,
-        setUserName,
+        updateName,
         avatar,
-        setAvatar
-    } = useUser();
+        setAvatar, 
+        removeAvatar
+    } = useUserProfile();
 
     const [error, setError] = useState("");
     const fileInputRef = useRef(null);
@@ -45,14 +47,14 @@ function Settings() {
         reader.readAsDataURL(file);
     }
 
-    function removeAvatar() {
-        setAvatar("");
-        setError("");
+    // function removeAvatar() {
+    //     setAvatar("");
+    //     setError("");
 
-        if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-        }
-    }
+    //     if (fileInputRef.current) {
+    //         fileInputRef.current.value = "";
+    //     }
+    // }
 
     return (
         <section className="settings-page">
@@ -108,7 +110,7 @@ function Settings() {
                     type="text"
                     value={userName}
                     onChange={(event) =>
-                        setUserName(event.target.value)
+                        updateName(event.target.value)
                     }
                 />
             </div>

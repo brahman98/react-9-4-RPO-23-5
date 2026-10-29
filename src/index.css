@@ -98,6 +98,7 @@ main {
   height: 55px;
   display: flex;
   align-items: center;
+  text-align: center;
   background: #ffffff;
   color: white;
   border-radius: 50%;
@@ -154,6 +155,10 @@ main {
 }
 .post-form button:hover {
   background: #374151;
+}
+.avatar-placeholder {
+  color: black;
+  text-align: center;
 }
 
 /* POST */
