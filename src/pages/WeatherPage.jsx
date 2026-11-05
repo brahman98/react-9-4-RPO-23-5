@@ -1,11 +1,11 @@
 import Weather from "../components/Weather";
 
 function WeatherPage() {
-    return (
-        <main>
-            <Weather />
-        </main>
-    )
+  return (
+    <>
+      <Weather />
+    </>
+  );
 }
 
 export default WeatherPage;
