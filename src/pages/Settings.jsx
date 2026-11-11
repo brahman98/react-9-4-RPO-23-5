@@ -47,15 +47,6 @@ function Settings() {
         reader.readAsDataURL(file);
     }
 
-    // function removeAvatar() {
-    //     setAvatar("");
-    //     setError("");
-
-    //     if (fileInputRef.current) {
-    //         fileInputRef.current.value = "";
-    //     }
-    // }
-
     return (
         <section className="settings-page">
             <h1>Настройки профиля</h1>

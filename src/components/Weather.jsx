@@ -15,17 +15,22 @@ function Weather() {
     setWeather(null);
 
     try {
-      const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=Berlin&count=10&language=en&format=json`);
+      const response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=ru`
+      );
       const data = await response.json();
 
       if (!data.results?.length) {
         throw new Error("Город не найден");
       }
-      
+
       const place = data.results[0];
-      const responseWeather = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m`);
+
+      const responseWeather = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
+      );
       const result = await responseWeather.json();
-      
+
       if (!responseWeather.ok) {
         throw new Error("Ошибка загрузки погоды");
       }
@@ -46,16 +51,28 @@ function Weather() {
   return (
     <section className="weather">
       <h2>Погода</h2>
-      <form action="">
-        <input placeholder="Введите город" />
-        <button>Узнать погоду</button>
+
+      <form onSubmit={getWeather} className="weather-form">
+        <input
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="Введите город"
+        />
+        <button disabled={loading}>
+          {loading ? "Загрузка..." : "Узнать"}
+        </button>
       </form>
-      <div>
-        <h3>Город</h3>
-        <p>Температура:</p>
-        <p>Влажность:</p>
-        <p>Ветер:</p>
-      </div>
+
+      {error && <p>{error}</p>}
+
+      {weather && (
+        <div className="weather-details">
+          <h3>{weather.city}</h3>
+          <p>Температура: {weather.temperature} °C</p>
+          <p>Влажность: {weather.humidity}%</p>
+          <p>Ветер: {weather.wind} км/ч</p>
+        </div>
+      )}
     </section>
   );
 }
