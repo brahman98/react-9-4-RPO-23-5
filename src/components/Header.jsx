@@ -13,7 +13,8 @@ function Header() {
                 <Link className={`nav-link theme-${theme}`} to="/profile">Профиль</Link>
                 <Link className={`nav-link theme-${theme}`} to="/settings">Настройки</Link>
                 <Link className={`nav-link theme-${theme}`} to="/about">О проекте</Link>
-                <Link className={`nav-link theme-${theme}`} to="/weather">Погода</Link>
+                {/* <Link className={`nav-link theme-${theme}`} to="/weather">Погода</Link> */}
+                <Link className={`nav-link theme-${theme}`} to="/currency">Курс валют</Link>
                 <button onClick={toggleTheme}>
                     {theme === "light" ? "DARK" : "LIGHT"}
                 </button>
